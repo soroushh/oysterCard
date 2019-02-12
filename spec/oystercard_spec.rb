@@ -21,11 +21,11 @@ describe Oystercard do
   end
 
     describe '#deduct' do
-      it { is_expected.to respond_to(:deduct).with(1).argument }
+      it { is_expected.to respond_to(:touch_out) }  #with(1).argument
 
       it 'deducts an amount from the balance' do
         subject.top_up(20)
-        expect{ subject.deduct 3}.to change{ subject.balance }.by -3
+        expect{ subject.touch_out }.to change{ subject.balance }.by -Oystercard::MIN_BALANCE
       end
     end
 
@@ -48,6 +48,10 @@ describe Oystercard do
 
       it 'raise error if it doesnt have minimum balance' do
         expect{subject.touch_in }.to raise_error "Not enough balance"
+      end
+
+      it 'deduct the amount when its check out' do
+        expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::MIN_BALANCE)
       end
     end
 

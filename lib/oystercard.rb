@@ -9,8 +9,7 @@ class Oystercard
 
   def initialize(balance = 0)
     @balance = balance
-    @entry_station = nil
-    @exit_station = nil
+    reset
     @journeys = []
 
   end
@@ -39,10 +38,8 @@ class Oystercard
     @exit_station = exit
     @current_journey = Hash[:entry, @entry_station, :exit, @exit_station]
     @journeys << @current_journey
-    @entry_station = nil
-    @exit_station = nil
+    reset
   end
-
 
 private
 
@@ -50,5 +47,9 @@ private
     @balance -= amount
   end
 
+  def reset
+    @entry_station = nil
+    @exit_station = nil
+  end
 
 end

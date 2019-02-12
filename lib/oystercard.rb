@@ -5,10 +5,16 @@ class Oystercard
 
   attr_reader :balance
   attr_reader :entry_station
+  attr_reader :journeys
 
   def initialize(balance = 0)
     @balance = balance
     @entry_station = nil
+    @exit_station = nil
+    @current_journey = [{:entry => @entry_station, :exit => @exit_station}]
+    @journeys = []
+
+
   end
 
 
@@ -30,9 +36,12 @@ class Oystercard
   end
 
 
-  def touch_out
+  def touch_out(exit = double)
     deduct(MIN_BALANCE)
+    @exit_station = exit
+    @journeys << @current_journey
     @entry_station = nil
+    @exit_station = nil
   end
 
 
@@ -41,6 +50,6 @@ private
   def deduct(amount = MIN_BALANCE)
     @balance -= amount
   end
-    
+
 
 end

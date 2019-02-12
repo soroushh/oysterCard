@@ -11,9 +11,7 @@ class Oystercard
     @balance = balance
     @entry_station = nil
     @exit_station = nil
-    @current_journey = [{:entry => @entry_station, :exit => @exit_station}]
     @journeys = []
-
 
   end
 
@@ -39,6 +37,7 @@ class Oystercard
   def touch_out(exit = double)
     deduct(MIN_BALANCE)
     @exit_station = exit
+    @current_journey = Hash[:entry, @entry_station, :exit, @exit_station]
     @journeys << @current_journey
     @entry_station = nil
     @exit_station = nil

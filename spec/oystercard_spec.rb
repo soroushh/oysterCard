@@ -54,5 +54,10 @@ describe Oystercard do
         expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::MIN_BALANCE)
       end
     end
-
+  it "remembers the entry station after touch_in" do
+    oystercard = Oystercard.new
+    oystercard.top_up(5)
+    oystercard.touch_in
+    expect(oystercard.entry_station).to eq("a")
+  end
 end

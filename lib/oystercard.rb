@@ -4,10 +4,12 @@ class Oystercard
   MIN_BALANCE = 1
 
   attr_reader :balance
+  attr_reader :entry_station
 
   def initialize
     @balance = 0
     @in_use = false
+    @entry_station = 'a'
 
   end
 

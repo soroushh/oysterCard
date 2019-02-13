@@ -1,3 +1,5 @@
+require_relative('oystercard.rb')
+
 class Oystercard
 
   MAX_BALANCE = 90

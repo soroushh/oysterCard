@@ -58,13 +58,6 @@ describe Oystercard do
       end
     end
 
-
-  it "remembers the entry station after touch_in" do
-    subject.top_up(5)
-    subject.touch_in(station)
-    expect(subject.entry_station).to eq station
-  end
-
   it 'sets entry station to nil after touch out' do
     subject.top_up(7)
     subject.touch_in(station)

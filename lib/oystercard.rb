@@ -1,4 +1,5 @@
 require_relative('oystercard.rb')
+require_relative('journey.rb')
 
 class Oystercard
 
@@ -13,7 +14,6 @@ class Oystercard
     @balance = balance
     reset
     @journeys = []
-
   end
 
 
@@ -36,14 +36,19 @@ class Oystercard
 
 
   def touch_out(exit = double)
-    deduct(MIN_BALANCE)
-    @exit_station = exit
-    @current_journey = Hash[:entry, @entry_station, :exit, @exit_station]
-    @journeys << @current_journey
+    @exiting = exit
+    deduct(Oystercard::MIN_BALANCE)
+    record_journey
     reset
   end
 
 private
+
+  def record_journey
+    @exit_station = @exit
+    @current_journey = Hash[:entry, @entry_station, :exit, @exit_station]
+    @journeys << @current_journey
+  end
 
   def deduct(amount = MIN_BALANCE)
     @balance -= amount

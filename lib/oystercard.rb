@@ -20,10 +20,6 @@ class Oystercard
     @balance += amount
   end
 
-  def in_journey?
-    @entry_station != nil
-  end
-
   def touch_in(station)
     deduct(@working_journey.fare_touch_in)
     raise 'Not enough balance' if @balance < MIN_BALANCE

@@ -34,16 +34,6 @@ describe Oystercard do
     end
 
     describe '#journey' do
-      it 'is not in a journey' do
-        expect(subject).not_to be_in_journey
-      end
-
-      it 'can touch_out' do
-        subject.top_up(10)
-        subject.touch_in("abc")
-        subject.touch_out("def")
-        expect(subject).not_to be_in_journey
-        end
 
       it 'raise error if it doesnt have minimum balance' do
         oyestercard = Oystercard.new(0)

@@ -6,13 +6,13 @@ class Oystercard
   MAX_BALANCE = 90
   MIN_BALANCE = 1
 
-  attr_reader :balance, :entry_station, :journeys, :current_journey
+  attr_reader :balance, :entry_station, :journeys, :current_journey, :working_journey
 
   def initialize(balance = 0)
     @balance = balance
     reset
     @journeys = []
-    @current_journey = nil
+
   end
 
 
@@ -29,12 +29,13 @@ class Oystercard
     raise 'Card already touched in' if in_journey?
     raise 'Not enough balance' if @balance < MIN_BALANCE
     journey = Journey.new(station)
-    @current_journey = journey
+    @working_journey = journey
   end
 
   def touch_out(exit)
     deduct(Oystercard::MIN_BALANCE)
     record_journey
+    @working_journey.exit_station = exit
     reset
   end
 

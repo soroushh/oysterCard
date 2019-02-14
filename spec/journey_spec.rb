@@ -26,10 +26,11 @@ describe Journey do
     expect(oystercard.touch_in(station).entry_station).to eq station
   end
 
-  it "has an entry_station after touch_in" do
+  it "has an exit_station after touch_out" do
     oystercard = Oystercard.new
     oystercard.top_up(10)
     oystercard.touch_in("aldgate")
-    expect(oystercard.current_journey.entry_station).to eq("aldgate")
+    oystercard.touch_out("abc")
+    expect(oystercard.working_journey.exit_station).to eq("abc")
   end
 end

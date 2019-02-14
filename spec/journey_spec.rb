@@ -22,4 +22,9 @@ describe Journey do
     oystercard.touch_out("abc")
     expect(oystercard.working_journey.exit_station).to eq("abc")
   end
+
+  it "checks the journey going to journey history" do
+    journey = Journey.new
+    expect(Journey.all).to include(journey)
+  end
 end

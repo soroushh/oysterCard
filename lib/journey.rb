@@ -7,6 +7,7 @@ class Journey
   def initialize(entry_station = nil, exit_station = nil)
     @entry_station = entry_station
     @exit_station = exit_station
+    self.class.all << self
   end
 
   def exit(station = nil)
@@ -26,6 +27,10 @@ class Journey
 
   def set_exit(exit)
     self.exit_station = exit
+  end
+
+  def self.all
+    @all ||= []
   end
 
 end

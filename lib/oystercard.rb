@@ -23,8 +23,7 @@ class Oystercard
   def touch_in(station)
     deduct(@working_journey.fare_touch_in)
     raise 'Not enough balance' if @balance < MIN_BALANCE
-    journey = Journey.new(station)
-    @working_journey = journey
+    @working_journey = Journey.new(station)
   end
 
   def touch_out(exit)

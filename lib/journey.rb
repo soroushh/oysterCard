@@ -14,13 +14,7 @@ class Journey
     @exit_station = station
   end
 
-  def fare_touch_in
-    return 0 if @entry_station == nil && @exit_station == nil
-    return 6 if @exit_station == nil
-    return 0 if @exit_station != nil && @entry_station != nil
-  end
-
-  def fare_touch_out
+  def fare
     return 1 if @exit_station == nil
     return 6 if @exit_station != nil
   end

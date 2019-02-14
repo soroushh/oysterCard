@@ -6,7 +6,7 @@ describe Journey do
 
   it "stores the entry station" do
     journey = Journey.new("aldgate")
-    expect(journey.entrystation).to eq "aldgate"
+    expect(journey.entry_station).to eq "aldgate"
   end
 
   it "fare deducts 6 if entry or exit is nil" do
@@ -23,7 +23,7 @@ describe Journey do
   it "remembers the entry station after touch_in" do
     oystercard = Oystercard.new
     oystercard.top_up(5)
-    expect(oystercard.touch_in(station).entrystation).to eq station
+    expect(oystercard.touch_in(station).entry_station).to eq station
   end
 
 end

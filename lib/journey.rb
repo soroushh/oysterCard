@@ -1,18 +1,19 @@
 require_relative('oystercard.rb')
 
 class Journey
-  attr_reader :entrystation
+  attr_reader :entry_station
 
-  def initialize(station)
-    @entrystation = station
+  def initialize(entry_station = nil, exit_station = nil)
+    @entry_station = entry_station
+    @exit_station = exit_station
   end
 
   def exit(station = nil)
-    @exitstation = station
+    @exit_station = station
   end
 
   def fare
-    return 6 if @entrystation == nil || @exitstation == nil
+    return 6 if @entry_station == nil || @exit_station == nil
     return 1
   end
 

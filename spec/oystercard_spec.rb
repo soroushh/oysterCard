@@ -54,18 +54,6 @@ describe Oystercard do
     expect(subject.entry_station).to eq nil
   end
 
-  it "sets journeys as empty by default" do
-    oystercard = Oystercard.new
-    expect(oystercard.journeys).to eq([])
-  end
-
-  it 'checks that touching in and out creates 1 journey' do
-    subject.top_up(10)
-    subject.touch_in("abc")
-    subject.touch_out('def')
-    expect { subject.touch_out(exit) }.to change{ subject.journeys.length }.by 1
-  end
-
   it "charges 6 if touching out without touching in" do
     oystercard = Oystercard.new
     oystercard.top_up(10)

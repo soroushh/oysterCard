@@ -90,4 +90,11 @@ describe Oystercard do
     oystercard.touch_in("abc")
     expect { oystercard.touch_in("def") }.to change{ oystercard.balance }.by(-6)
   end
+
+  it "charges 1 for a normal journey" do
+    oystercard = Oystercard.new
+    oystercard.top_up(10)
+    oystercard.touch_in("abc")
+    expect { oystercard.touch_out("def") }.to change{ oystercard.balance }.by(-1)
+  end
 end

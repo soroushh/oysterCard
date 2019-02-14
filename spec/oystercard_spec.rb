@@ -83,4 +83,11 @@ describe Oystercard do
     oystercard.touch_out("def")
     expect { oystercard.touch_out("def") }.to change{ oystercard.balance }.by(-6)
   end
+
+  it "charges 6 if touching in having not touched out from before" do
+    oystercard = Oystercard.new
+    oystercard.top_up(10)
+    oystercard.touch_in("abc")
+    expect { oystercard.touch_in("def") }.to change{ oystercard.balance }.by(-6)
+  end
 end

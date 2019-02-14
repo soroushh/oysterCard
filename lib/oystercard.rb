@@ -10,7 +10,6 @@ class Oystercard
 
   def initialize(balance = 0)
     @balance = balance
-    reset
     @journeys = []
     @working_journey = Journey.new
   end
@@ -36,7 +35,6 @@ class Oystercard
     deduct(@working_journey.fare_touch_out)
     record_journey
     @working_journey.exit_station = exit
-    reset
   end
 
 private
@@ -49,11 +47,6 @@ private
 
   def deduct(amount = MIN_BALANCE)
     @balance -= amount
-  end
-
-  def reset
-    @entry_station = nil
-    @exit_station = nil
   end
 
 end

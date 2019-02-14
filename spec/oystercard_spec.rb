@@ -37,12 +37,6 @@ describe Oystercard do
         expect(subject).not_to be_in_journey
       end
 
-      it 'can touch in' do
-        subject.top_up(20)
-        subject.touch_in(station)
-        expect(subject).to be_in_journey
-      end
-
       it 'can touch_out' do
         subject.touch_out(exit)
         expect(subject).not_to be_in_journey

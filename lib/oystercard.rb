@@ -29,6 +29,7 @@ class Oystercard
   def touch_in(station)
     raise 'Card already touched in' if in_journey?
     raise 'Not enough balance' if @balance < MIN_BALANCE
+    @entry_station = station
     journey = Journey.new(station)
   end
 

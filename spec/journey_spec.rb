@@ -9,17 +9,6 @@ describe Journey do
     expect(journey.entry_station).to eq "aldgate"
   end
 
-  it "fare deducts 6 if entry or exit is nil" do
-    journey = Journey.new("blag")
-    expect(journey.fare).to eq(6)
-  end
-
-  it "fare deducts 1 if entry and exit are present" do
-    journey = Journey.new("aldgate")
-    journey.exit("Uxbridge")
-    expect(journey.fare).to eq(1)
-  end
-
   it "remembers the entry station after touch_in" do
     oystercard = Oystercard.new
     oystercard.top_up(5)

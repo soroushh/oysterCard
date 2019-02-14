@@ -53,7 +53,6 @@ describe Oystercard do
       it 'deduct the amount when its check out' do
         subject.top_up(10)
         subject.touch_in("abc")
-        subject.touch_out("def")
         expect { subject.touch_out(exit) }.to change{ subject.balance }.by(-Oystercard::MIN_BALANCE)
       end
     end

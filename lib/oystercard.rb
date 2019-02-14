@@ -12,7 +12,7 @@ class Oystercard
     @balance = balance
     reset
     @journeys = []
-
+    @working_journey = Journey.new
   end
 
 
@@ -26,14 +26,14 @@ class Oystercard
   end
 
   def touch_in(station)
-    raise 'Card already touched in' if in_journey?
+    deduct(@working_journey.fare_touch_in)
     raise 'Not enough balance' if @balance < MIN_BALANCE
     journey = Journey.new(station)
     @working_journey = journey
   end
 
   def touch_out(exit)
-    deduct(Oystercard::MIN_BALANCE)
+    deduct(@working_journey.fare_touch_out)
     record_journey
     @working_journey.exit_station = exit
     reset

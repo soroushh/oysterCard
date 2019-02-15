@@ -1,4 +1,5 @@
 require_relative('oystercard.rb')
+require_relative("station.rb")
 
 class Journey
   attr_reader :entry_station
@@ -14,8 +15,8 @@ class Journey
     @exit_station = station
   end
 
-  def fare
-    return 1 if @exit_station == nil
+  def fare(exit)
+    return (exit.zone - entry_station.zone).abs+1 if @exit_station == nil
     return 6 if @exit_station != nil
   end
 

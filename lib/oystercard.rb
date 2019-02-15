@@ -1,5 +1,6 @@
 require_relative('oystercard.rb')
 require_relative('journey.rb')
+require_relative("station.rb")
 
 class Oystercard
 
@@ -27,7 +28,7 @@ class Oystercard
   end
 
   def touch_out(exit)
-    deduct(@working_journey.fare)
+    deduct(@working_journey.fare(exit))
     @working_journey.exit_station = exit
   end
 

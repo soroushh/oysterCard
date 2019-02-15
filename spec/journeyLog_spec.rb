@@ -16,7 +16,8 @@ describe JourneyLog do
     log = JourneyLog.new
     log.start(station)
     log.finish(station_2)
-    expect(log.journeys).to eq([{entry_station: station, exit_station: station_2}])
+    journey = Journey.new(station,station_2)
+    expect(log.journeys).to include(journey)
   end
 
 end
